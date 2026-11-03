@@ -1,0 +1,6 @@
+{
+  "name": "JananiSetu - Maternal & Newborn Emergency Referral Network",
+  "description": "Emergency referral, transport coordination, and maternal health system linking rural clinics to Aurangabad regional hospitals with daily routines, precautions, and emergency dispatch.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Registered healthcare professional or expectant mother profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "roleTitle": { "type": "string" },
+        "organization": { "type": "string" },
+        "location": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" }
+      },
+      "required": ["id", "name", "role", "email"]
+    },
+    "ReferralCase": {
+      "title": "ReferralCase",
+      "description": "Emergency ambulance dispatch & maternal referral record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "patientName": { "type": "string" },
+        "referringFacility": { "type": "string" },
+        "targetHospital": { "type": "string" },
+        "ambulanceId": { "type": "string" },
+        "ambulanceName": { "type": "string" },
+        "ambulanceLocation": { "type": "string" },
+        "driverName": { "type": "string" },
+        "driverPhone": { "type": "string" },
+        "estimatedArrivalMin": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "ambulanceId", "ambulanceLocation"]
+    },
+    "DailyMilestone": {
+      "title": "DailyMilestone",
+      "description": "Completed maternal daily routine milestone",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "milestoneId": { "type": "string" },
+        "time": { "type": "string" },
+        "title": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "completedAt": { "type": "string" }
+      },
+      "required": ["userId", "milestoneId", "completed"]
+    },
+    "KickLog": {
+      "title": "KickLog",
+      "description": "Cardiff fetal kick counting session record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "count": { "type": "number" },
+        "durationMinutes": { "type": "number" },
+        "notes": { "type": "string" }
+      },
+      "required": ["id", "userId", "count", "durationMinutes"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile collection"
+    },
+    "/referrals/{referralId}": {
+      "schema": "ReferralCase",
+      "description": "Emergency ambulance dispatch referrals"
+    },
+    "/users/{userId}/daily_routines/{routineId}": {
+      "schema": "DailyMilestone",
+      "description": "User specific daily completed routine milestones"
+    },
+    "/users/{userId}/kick_logs/{kickId}": {
+      "schema": "KickLog",
+      "description": "Cardiff kick counts recorded by the mother"
+    }
+  }
+}
